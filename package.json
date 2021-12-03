@@ -1,0 +1,15 @@
+{
+  "name": "cricsummit",
+  "version": "1.0.0",
+  "description": "Outcome Prediction tool for cricket",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.4.3"
+  }
+}
