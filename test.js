@@ -1,7 +1,7 @@
-const { game } = require('./globals')
-const { populateBowlTypes } = require('./populators')
-const { predictOutcome } = require('./predictOutcome')
-const shotTimings = require('./data/shotTimings.json')
+const { game } = require('./src/globals')
+const { populateBowlTypes } = require('./src/populators')
+const { predictOutcome } = require('./src/predictOutcome')
+const shotTimings = require('./src/data/shotTimings.json')
 
 populateBowlTypes()
 
