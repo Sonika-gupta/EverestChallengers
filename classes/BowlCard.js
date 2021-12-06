@@ -1,15 +1,18 @@
+const shotTypes = require('../data/shotTypes.json')
 class BowlCard {
-  constructor ({ name, goodShotTypes, averageShotTypes, badShotTypes }) {
-    this.name = name.toLowerCase()
-    this.goodShotTypes = goodShotTypes
-    this.averageShotTypes = averageShotTypes
-    this.badShotTypes = badShotTypes
+  constructor (name) {
+    this.name = name
+    this.hitProbs = this.assignProbs()
   }
-  getShotLevel (shotType) {
-    if (this.goodShotTypes.includes(shotType)) return 'good'
-    if (this.averageShotTypes.includes(shotType)) return 'average'
-    if (this.badShotTypes.includes(shotType)) return 'bad'
-    return null
+  getHitProbability (shotType) {
+    return this.hitProbs[shotType] || null
+  }
+  assignProbs () {
+    const probObj = {}
+    shotTypes.forEach(type => {
+      probObj[type] = Math.random().toFixed(2)
+    })
+    return probObj
   }
 }
 

@@ -1,65 +1,12 @@
-{
-    "Bouncer": {
-        "goodShotTypes": [
-            "pull",
-            "upperCut"
-        ],
-        "averageShotTypes": [
-            "straight"
-        ],
-        "badShotTypes": [
-            "flick",
-            "longOn",
-            "squareCut",
-            "sweep",
-            "coverDrive",
-            "scoop",
-            "legLance"
-        ]
-    },
-    "Outswinger": {
-        "goodShotTypes": [],
-        "averageShotTypes": [],
-        "badShotTypes": []
-    },
-    "Yorker": {
-        "goodShotTypes": [],
-        "averageShotTypes": [],
-        "badShotTypes": []
-    },
-    "Off Break": {
-        "goodShotTypes": [],
-        "averageShotTypes": [],
-        "badShotTypes": []
-    },
-    "Inswinger": {
-        "goodShotTypes": [],
-        "averageShotTypes": [],
-        "badShotTypes": []
-    },
-    "Leg Cutter": {
-        "goodShotTypes": [],
-        "averageShotTypes": [],
-        "badShotTypes": []
-    },
-    "Slower Ball": {
-        "goodShotTypes": [],
-        "averageShotTypes": [],
-        "badShotTypes": []
-    },
-    "Pace": {
-        "goodShotTypes": [],
-        "averageShotTypes": [],
-        "badShotTypes": []
-    },
-    "Off Cutter": {
-        "goodShotTypes": [],
-        "averageShotTypes": [],
-        "badShotTypes": []
-    },
-    "Doosra": {
-        "goodShotTypes": [],
-        "averageShotTypes": [],
-        "badShotTypes": []
-    }
-}
+[
+    "Bouncer",
+    "Outswinger",
+    "Yorker",
+    "OffBreak",
+    "Inswinger",
+    "LegCutter",
+    "SlowerBall",
+    "Pace",
+    "OffCutter",
+    "Doosra"
+]

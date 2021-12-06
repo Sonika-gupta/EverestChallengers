@@ -1,6 +1,5 @@
 class Game {
-  constructor (id) {
-    this.id = id
+  constructor () {
     this.bowlCards = []
   }
 

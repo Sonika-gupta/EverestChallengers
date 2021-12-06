@@ -3,12 +3,12 @@ const BowlCard = require('./classes/BowlCard')
 const { game } = require('./globals')
 
 function populateBowlTypes () {
-  Object.entries(bowlTypes).forEach(([type, data]) => {
-    const bowlCard = new BowlCard({ name: type, ...data })
+  bowlTypes.forEach(type => {
+    const bowlCard = new BowlCard(type)
     game.addBowlCard(bowlCard)
   })
+  console.log(game)
 }
-console.log(game)
 
 module.exports = {
   populateBowlTypes
