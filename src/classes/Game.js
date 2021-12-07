@@ -8,11 +8,12 @@ class Game {
     this.teams = []
     this.battingTeamIndex = null
     this.bowlingTeamIndex = null
-    this.currentBowlerIndex = null
-    this.currentBatsmanIndex = null
-    this.secondaryBatsmanIndex = null
-    this.wicketsIndices = []
+    this.currentBowler = { index: -1 }
+    this.currentBatsman = { index: -1 }
+    this.secondaryBatsman = { index: -1 }
+    this.wicketIndices = []
     this.target = 0
+    this.score = 0
   }
 
   addBowlCard (card) {
@@ -60,16 +61,24 @@ class Game {
     let i
     do {
       i = generateRandomIndex(this.teams[this.bowlingTeamIndex].size)
-    } while (i === this.currentBowlerIndex)
-    this.currentBowlerIndex = i
+    } while (i === this.currentBowler.index)
+    this.currentBowler = {
+      ...this.teams[this.bowlingTeamIndex].players[i],
+      index: i
+    }
+    return this.currentBowler
   }
 
   assignCurrentBatsmen () {
     let i
     do {
       i = generateRandomIndex(this.teams[this.battingTeamIndex].size)
-    } while (i === this.currentBatsmanIndex && this.wicketsIndices.includes(i))
-    this.currentBatsmanIndex = i
+    } while (i === this.currentBatsman.index && this.wicketIndices.includes(i))
+    this.currentBatsman = {
+      ...this.teams[this.battingTeamIndex].players[i],
+      index: i
+    }
+    return this.currentBatsman
   }
 
   assignSecondaryBatsmen () {
@@ -77,16 +86,34 @@ class Game {
     do {
       i = generateRandomIndex(this.teams[this.battingTeamIndex].size)
     } while (
-      i === this.secondaryBatsmanIndex &&
-      this.wicketsIndices.includes(i)
+      i === this.secondaryBatsman.index &&
+      this.wicketIndices.includes(i)
     )
-    this.secondaryBatsman = i
+    this.secondaryBatsman = {
+      ...this.teams[this.battingTeamIndex].players[i],
+      index: i
+    }
+    return this.secondaryBatsman
+  }
+
+  startSuperOver (info) {
+    this.updateGame(info)
+    this.assignBowler()
+    this.assignCurrentBatsmen()
+    this.assignSecondaryBatsmen()
+
+    return {
+      bowler: this.currentBowler.name,
+      batsman: this.currentBatsman.name
+    }
   }
 
   playDelivery (outcome) {
     if (outcome.score === -1) {
-      this.currentBatsman = this.assignBatsmen()
-      return this.summary()
+      this.wicketIndices.push(this.currentBatsman.index)
+      this.assignCurrentBatsmen()
+      if (this.wicketIndices.length === 2) return this.getResult()
+      return
     }
 
     if (outcome.score === 1 || outcome.score === 3) {
@@ -95,13 +122,19 @@ class Game {
       this.currentBatsman = temp
     }
 
-    this.target -= outcome.score
-    if (this.target <= 0) return this.summary()
-    return
+    this.score += outcome.score
+    if (this.score >= this.target) return this.getResult()
   }
 
-  summary () {
-    return 'Match Over'
+  getResult () {
+    const teamName = this.teams[this.battingTeamIndex].name.toUpperCase()
+    const comment = `${teamName} scored: ${this.score} runs`
+    if (this.wicketIndices.length === 2 || this.score < this.target) {
+      return comment + `\n${teamName} lost by ${this.target - this.score} runs`
+    }
+    return (
+      comment + `\n${teamName} won by ${2 - this.wicketIndices.length} wickets`
+    )
   }
 }
 

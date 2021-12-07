@@ -1,4 +1,4 @@
-const { strToInput } = require('./utils')
+const { generateRandomIndex, strToInput } = require('./utils')
 const { predictOutcome } = require('./predictOutcome')
 const { errors } = require('./globals')
 

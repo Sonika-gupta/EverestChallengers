@@ -4,7 +4,7 @@
   "description": "Outcome Prediction tool for cricket",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node src/index.js",
     "test": "jest"
   },
   "author": "",
