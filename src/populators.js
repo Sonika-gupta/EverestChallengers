@@ -7,7 +7,6 @@ function populateBowlTypes () {
     const bowlCard = new BowlCard(type)
     game.addBowlCard(bowlCard)
   })
-  console.log(game)
 }
 
 module.exports = {

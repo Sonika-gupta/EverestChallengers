@@ -30,10 +30,10 @@ const model = {
   ],
   good: [
     { minProb: 0.7, outcomes: levelledOutcomes.good },
-    { minProb: 0.4, outcomes: levelledOutcomes.betweenWickets.slice(0, 1) }
+    { minProb: 0.4, outcomes: levelledOutcomes.betweenWickets.slice(0, 2) }
   ],
   early: [
-    { minProb: 0.7, outcomes: levelledOutcomes.betweenWickets.slice(0, 1) },
+    { minProb: 0.7, outcomes: levelledOutcomes.betweenWickets.slice(0, 2) },
     { minProb: 0.4, outcomes: levelledOutcomes.average }
   ],
   late: [{ minProb: 0, outcomes: levelledOutcomes.bad }],
