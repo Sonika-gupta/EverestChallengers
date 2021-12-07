@@ -42,7 +42,9 @@
   },
   "fiveRuns": {
     "result": "5 runs",
-    "comments": []
+    "comments": [
+      "No ball and Four!"
+    ]
   },
   "sixRuns": {
     "result": "6 runs",

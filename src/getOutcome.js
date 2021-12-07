@@ -2,19 +2,22 @@ const { game, errors } = require('./globals')
 const { strToInput, generateRandomIndex } = require('./utils')
 const { predictionModel } = require('./predictionModel')
 
-function getShotOutcome (str) {
+function getOutcome (str) {
   const input = strToInput(str)
-  const outcome = predictOutcome(...input)
+  return predictOutcome(...input)
+}
+
+function getShotOutcome (str) {
+  const outcome = getOutcome(str)
   return outcome.result
 }
 
 function getCommentaryOutcome (str) {
-  const input = strToInput(str)
-  const outcome = predictOutcome(...input)
+  const outcome = getOutcome(str)
   return (
     outcome.comments[generateRandomIndex(outcome.comments.length)] +
     ' - ' +
-    getShotOutcome(outcome)
+    outcome.result
   )
 }
 
