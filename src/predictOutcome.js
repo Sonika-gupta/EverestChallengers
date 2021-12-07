@@ -1,10 +1,9 @@
-const { game, errors } = require('./globals')
+const { errors } = require('./globals')
 const { generateRandomIndex } = require('./utils')
 const { predictionModel } = require('./predictionModel')
+const BowlCard = require('./classes/BowlCard')
 
-function predictOutcome (bowlType, shotType, shotTiming) {
-  const bowlCard = game.getBowlCard(bowlType)
-  if (!bowlCard) throw errors.invalidBowlType
+function predictOutcome (bowlCard, shotType, shotTiming) {
   const hitProbability = bowlCard.getHitProbability(shotType)
   if (!hitProbability) throw errors.invalidShotType
 
