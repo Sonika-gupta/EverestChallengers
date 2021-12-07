@@ -8,7 +8,6 @@ class Game {
   }
 
   getBowlCard (type) {
-    // console.log(this.bowlCards)
     return this.bowlCards.find(card => card.name === type)
   }
 }
