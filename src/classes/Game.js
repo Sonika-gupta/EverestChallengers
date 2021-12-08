@@ -21,7 +21,7 @@ class Game {
   }
 
   getBowlCard (type) {
-    return this.bowlCards.find(card => card.type === type)
+    return this.bowlCards.find(card => card.value === type)
   }
 
   addTeams (team1, team2) {
@@ -35,18 +35,13 @@ class Game {
     this.teams.push(team1, team2)
   }
 
-  updateGame ({ target, battingTeamName, bowlingTeamName }) {
+  updateGame ({ target, battingTeamName }) {
     if (target) this.target = target
-    if (battingTeamName) {
-      this.battingTeamIndex = this.teams.findIndex(
-        team => team.name === battingTeamName
-      )
-    }
-    if (bowlingTeamName) {
-      this.bowlingTeamIndex = this.teams.findIndex(
-        team => team.name === bowlingTeamName
-      )
-    }
+    this.teams.forEach((team, i) =>
+      team.name === battingTeamName
+        ? (this.battingTeamIndex = i)
+        : (this.bowlingTeamIndex = i)
+    )
   }
 
   getRandomBowlCards (count) {

@@ -1,7 +1,7 @@
-const { populateBowlCards } = require('../src/populators')
+const populateGame = require('../src/populators')
 const { getOutcome } = require('../src/predictOutcome')
 
-populateBowlCards()
+populateGame()
 
 describe('Validate Input', () => {
   test('empty input should throw error', () => {

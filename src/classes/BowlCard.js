@@ -1,7 +1,7 @@
 class BowlCard {
-  constructor ({ name, type, shotTypes }) {
+  constructor ({ name, value, shotTypes }) {
     this.name = name
-    this.type = type
+    this.value = value
     this.hitProbs = this.assignProbs(shotTypes)
   }
   getHitProbability (shotType) {

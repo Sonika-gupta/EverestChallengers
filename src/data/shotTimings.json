@@ -1,6 +1,18 @@
 [
-    "early",
-    "good",
-    "perfect",
-    "late"
+    {
+        "name": "Early",
+        "value": "early"
+    },
+    {
+        "name": "Good",
+        "value": "good"
+    },
+    {
+        "name": "Perfect",
+        "value": "perfect"
+    },
+    {
+        "name": "Late",
+        "value": "late"
+    }
 ]

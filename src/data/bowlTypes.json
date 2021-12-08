@@ -1,42 +1,42 @@
 [
     {
-        "type": "bouncer",
-        "name": "Bouncer"
+        "name": "Bouncer",
+        "value": "bouncer"
     },
     {
-        "type": "outswinger",
-        "name": "Out Swinger"
+        "name": "Out Swinger",
+        "value": "outswinger"
     },
     {
-        "type": "yorker",
-        "name": "Yorker"
+        "name": "Yorker",
+        "value": "yorker"
     },
     {
-        "type": "offbreak",
-        "name": "Off Break"
+        "name": "Off Break",
+        "value": "offbreak"
     },
     {
-        "type": "inswinger",
-        "name": "Inswinger"
+        "name": "Inswinger",
+        "value": "inswinger"
     },
     {
-        "type": "legcutter",
-        "name": "Leg Cutter"
+        "name": "Leg Cutter",
+        "value": "legcutter"
     },
     {
-        "type": "slowerball",
-        "name": "Slower"
+        "name": "Slower",
+        "value": "slowerball"
     },
     {
-        "type": "pace",
-        "name": "Pace"
+        "name": "Pace",
+        "value": "pace"
     },
     {
-        "type": "offcutter",
-        "name": "Off Cutter"
+        "name": "Off Cutter",
+        "value": "offcutter"
     },
     {
-        "type": "doosra",
-        "name": "Doosra"
+        "name": "Doosra",
+        "value": "doosra"
     }
 ]

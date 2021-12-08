@@ -1,6 +1,5 @@
 const { getOutcome } = require('./predictOutcome')
-const { generateRandomIndex, strToInput } = require('./utils')
-
+const { generateRandomIndex, strToInput, printToConsole } = require('./utils')
 const inquiry = require('./inquiry')
 
 function getComment (outcome) {
@@ -11,16 +10,14 @@ function getComment (outcome) {
   )
 }
 
-async function getShotOutcome () {
-  const str = await inquiry.getPredictionInput()
+function getShotOutcome (str) {
   const outcome = getOutcome(str)
-  return outcome.result
+  printToConsole(outcome.result)
 }
 
-async function getCommentaryOutcome () {
-  const str = await inquiry.getPredictionInput()
+function getCommentaryOutcome (str) {
   const outcome = getOutcome(str)
-  return getComment(outcome)
+  printToConsole(getComment(outcome))
 }
 
 module.exports = {

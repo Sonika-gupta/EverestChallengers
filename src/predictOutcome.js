@@ -11,7 +11,6 @@ function getOutcome (str) {
   if (!input || input.length !== 3) throw errors.invalidInput
 
   const bowlCard = game.getBowlCard(input[0])
-  console.log(bowlCard)
   if (!bowlCard) throw errors.invalidBowlType
 
   return predictOutcome(bowlCard, input[1], input[2])
@@ -20,6 +19,8 @@ function getOutcome (str) {
 function predictOutcome (bowlCard, shotType, shotTiming) {
   const hitProbability = bowlCard.getHitProbability(shotType)
   if (!hitProbability) throw errors.invalidShotType
+
+  if (!predictionModel[shotTiming]) throw errors.invalidShotTiming
 
   for (let { minProb, outcomes } of predictionModel[shotTiming]) {
     if (hitProbability >= minProb) {

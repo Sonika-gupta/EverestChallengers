@@ -1,16 +1,13 @@
-const BowlCard = require('./classes/BowlCard')
-const Team = require('./classes/Team')
-const Player = require('./classes/Player')
-
-const bowlTypes = require('./data/bowlTypes.json')
-const shotTypes = require('./data/shotTypes.json')
-const teams = require('./data/teams.json')
-
+const { BowlCard, Team, Player } = require('./classes')
+const { bowlTypes, shotTypes, teams } = require('./data')
 const game = require('./models/game')
 
 function populateBowlCards () {
   bowlTypes.forEach(type => {
-    const bowlCard = new BowlCard({ ...type, shotTypes })
+    const bowlCard = new BowlCard({
+      ...type,
+      shotTypes: shotTypes.map(type => type.value)
+    })
     game.addBowlCard(bowlCard)
   })
 }
@@ -27,7 +24,9 @@ function populateTeams () {
   game.addTeams(team1, team2)
 }
 
-module.exports = {
-  populateBowlCards,
-  populateTeams
+function populateGame () {
+  populateBowlCards()
+  populateTeams()
 }
+
+module.exports = populateGame
