@@ -1,11 +1,11 @@
-const populateGame = require('../src/populators')
 const playSuperOver = require('../src/playSuperOver')
+const populateGame = require('../src/populators')
 
 populateGame()
 
-describe('Test Super Over', () => {
-  test('see if it runs', () => {
-    expect(
+describe('Valid Super Over', () => {
+  test('Should Print Commentary for each ball and result of match', () => {
+    expect(() =>
       playSuperOver({
         shotsPlayed: [
           'Straight Perfect',
@@ -16,6 +16,6 @@ describe('Test Super Over', () => {
           'Flick Perfect'
         ]
       })
-    )
+    ).not.toThrow()
   })
 })

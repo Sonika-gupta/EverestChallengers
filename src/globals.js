@@ -7,7 +7,8 @@ module.exports = {
     invalidShotType: 'Invalid Shot Type',
     invalidShotTiming: 'Invalid Shot Timing',
     unmatchedTypeTeam: 'Team Type Not Matched',
-    teamAlreadyAssigned: 'Teams Already Assigned'
+    teamAlreadyAssigned: 'Teams Already Assigned',
+    requiredSixEntries: 'Need Six Shots for an Over'
   },
   hitProbs: {
     high: 0.7,
