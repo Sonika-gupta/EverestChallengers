@@ -51,7 +51,7 @@ Jest has been used to create unit tests. To run the tests, run `npm run tests`.
 ```
 function: getShotOutcome
 input: "bowl_type shot_type shot_timing"
-output: "shot_outcome"
+prints: "shot_outcome"
 ```
 
 => convert string to input parameters for `predictOutcome`  
@@ -60,7 +60,7 @@ output: "shot_outcome"
 ```
 function: predictOutcome
 input: bowl_type, shot_type, shot_timing
-output: shot_outcome
+returns: shot_outcome
 ```
 
 => Get the bowl card for given bowl type  
@@ -95,7 +95,7 @@ Levels of Shot Played:
 ```
 function: getCommentaryOutcome
 input: "bowl_type shot_type shot_timing"
-output: "suitable_commentary - shot_outcome"
+prints: "suitable_commentary - shot_outcome"
 ```
 
 => convert string to input parameters for `predictOutcome`  
@@ -112,8 +112,8 @@ output: "suitable_commentary - shot_outcome"
 
 #### Assumptions
 
-- Chasing Team: Assuming that Team India has played and Team Australia is chasing.
-- Target Runs: Assuming Team India scored 20 runs in the super over so Team Australia requires 21 for a win.
+- Chasing Team: Default: Assuming that Team India has played and Team Australia is chasing.
+- Target Runs: Default: Assuming Team India scored 20 runs in the super over so Team Australia requires 21 for a win.
 - Bowl Cards: 6 bowl cards for super over will be picked randomly from valid bowl cards.
 - Wickets: 2 batsmen from Team Australia will be picked randomly.
 - Bowler: Bowler from Team India will be picked randomly.
@@ -121,9 +121,9 @@ output: "suitable_commentary - shot_outcome"
 #### Flow
 
 ```
-function: predictSuperOverOutcome
-input: "shot_type shot_timing"
-output: ball_summary
+function: playSuperOver
+input: [i] = [shot_type, shot_timing], n = 6 | [i] = "shot_type shot_timing", n = 6
+prints: ball_summary
         suitable_commentary - shot_outcome
 
         match_result
@@ -131,9 +131,10 @@ output: ball_summary
 
 => Chose randomly batting team, bowling team, 6 bowl cards, 2 wickets, 1 bowler, target score  
 => Predict Outcome for each ball  
-=> Add the received outcome score to team score  
-=> return won status if target chased  
-=> return if both wickets gone or target not achieved
+=> Add the received outcome score to team score
+=> Update game state with received outcome
+=> Print won status if target chased  
+=> Print lost status if both wickets gone or target not achieved
 
 <br>
 
@@ -141,4 +142,4 @@ output: ball_summary
 
 1. Remove Random assignment of hit probability
 2. Make Commentary more comprehensible depending on each bowl type and shot type
-3. Provide options to chose batsmen, bowler, target run in Super Over
+3. Provide options to chose batsmen, bowler in Super Over
