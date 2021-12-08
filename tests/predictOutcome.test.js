@@ -1,24 +1,14 @@
-const { game } = require('../src/globals')
 const shotTimings = require('../src/data/shotTimings.json')
 const shotTypes = require('../src/data/shotTypes.json')
+const outcomes = require('../src/data/outcomes.json')
 
-const { populateBowlTypes } = require('../src/populators')
-const { getShotOutcome } = require('../src/wrappers')
+const game = require('../src/models/game')
+const { populateBowlCards } = require('../src/populators')
+const predictOutcome = require('../src/predictOutcome')
 
 const [highProb, averageProb] = [0.7, 0.4]
 
-populateBowlTypes()
-describe('validate input types', () => {
-  test('Bowl type not allowed', () => {
-    expect(() => getShotOutcome('BB Pull Perfect')).toThrow('Invalid Bowl Type')
-  })
-
-  test('Shot type not allowed', () => {
-    expect(() => getShotOutcome('Bouncer SS Perfect')).toThrow(
-      'Invalid Shot Type'
-    )
-  })
-})
+populateBowlCards()
 
 describe('bad outcome', () => {
   test('shot type with hit probability < averageProb should return 0 runs or wicket irrespective of timing', () => {
@@ -29,8 +19,8 @@ describe('bad outcome', () => {
     )
     const timing = shotTimings[Math.floor(Math.random() * shotTimings.length)]
 
-    expect(getShotOutcome(`${card.name} ${badShot} ${timing}`)).toMatch(
-      /0 runs|1 wicket/
+    expect([outcomes.wicket, outcomes.noRuns]).toContain(
+      predictOutcome(card, badShot, timing)
     )
   })
 })
@@ -43,8 +33,8 @@ describe('perfect timing', () => {
       ([shot, prob]) => prob >= highProb
     )
 
-    expect(getShotOutcome(`${card.name} ${boundaryShot} Perfect`)).toMatch(
-      /4 runs|6 runs/
+    expect([outcomes.fourRuns, outcomes.sixRuns]).toContain(
+      predictOutcome(card, boundaryShot, 'perfect')
     )
   })
 
@@ -53,8 +43,8 @@ describe('perfect timing', () => {
       ([shot, prob]) => prob >= averageProb && prob < highProb
     )
 
-    expect(getShotOutcome(`${card.name} ${averageShot} Perfect`)).toMatch(
-      /2 runs|3 runs/
+    expect([outcomes.twoRuns, outcomes.threeRuns]).toContain(
+      predictOutcome(card, averageShot, 'perfect')
     )
   })
 })
@@ -67,8 +57,8 @@ describe('good timing', () => {
       ([shot, prob]) => prob >= highProb
     )
 
-    expect(getShotOutcome(`${card.name} ${goodShot} Good`)).toMatch(
-      /3 runs|4 runs/
+    expect([outcomes.threeRuns, outcomes.fourRuns]).toContain(
+      predictOutcome(card, goodShot, 'good')
     )
   })
 
@@ -77,8 +67,8 @@ describe('good timing', () => {
       ([shot, prob]) => prob >= averageProb && prob < highProb
     )
 
-    expect(getShotOutcome(`${card.name} ${averageShot} Good`)).toMatch(
-      /1 run|2 runs/
+    expect([outcomes.oneRun, outcomes.twoRuns]).toContain(
+      predictOutcome(card, averageShot, 'good')
     )
   })
 })
@@ -91,8 +81,8 @@ describe('early timing', () => {
       ([shot, prob]) => prob >= highProb
     )
 
-    expect(getShotOutcome(`${card.name} ${goodShot} Early`)).toMatch(
-      /1 run|2 runs/
+    expect([outcomes.oneRun, outcomes.twoRuns]).toContain(
+      predictOutcome(card, goodShot, 'early')
     )
   })
 
@@ -101,8 +91,8 @@ describe('early timing', () => {
       ([shot, prob]) => prob >= averageProb && prob < highProb
     )
 
-    expect(getShotOutcome(`${card.name} ${averageShot} Early`)).toMatch(
-      /0 runs|1 run/
+    expect([outcomes.noRuns, outcomes.oneRun]).toContain(
+      predictOutcome(card, averageShot, 'early')
     )
   })
 })
@@ -113,8 +103,8 @@ describe('late timing', () => {
       game.bowlCards[Math.floor(Math.random() * game.bowlCards.length)]
     const shot = shotTypes[Math.floor(Math.random() * shotTypes.length)]
 
-    expect(getShotOutcome(`${card.name} ${shot} Late`)).toMatch(
-      /0 runs|1 wicket/
+    expect([outcomes.noRuns, outcomes.wicket]).toContain(
+      predictOutcome(card, shot, 'late')
     )
   })
 })

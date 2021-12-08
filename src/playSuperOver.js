@@ -1,7 +1,12 @@
-const { game } = require('./game')
-const { generateRandomIndex, strToInput, toTitleCase } = require('./utils')
-const { predictOutcome } = require('./predictOutcome')
+const predictOutcome = require('./predictOutcome')
+const {
+  generateRandomIndex,
+  strToInput,
+  toTitleCase,
+  printToConsole
+} = require('./utils')
 const { getComment } = require('./wrappers')
+const game = require('./models/game')
 
 function format (str) {
   const values = str
@@ -38,15 +43,13 @@ function playSuperOver (shotsPlayed, chasingTeamName) {
       outcome
     })
 
-    console.log(comment)
+    printToConsole(comment)
 
     result = game.playDelivery(outcome)
     if (result) break
   }
 
-  console.log(result || game.getResult())
+  printToConsole(result || game.getResult())
 }
 
-module.exports = {
-  playSuperOver
-}
+module.exports = playSuperOver

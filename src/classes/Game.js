@@ -1,6 +1,6 @@
-const { generateRandomIndex, strToInput } = require('../utils')
-const { errors } = require('../globals')
 const Team = require('./Team')
+const { errors } = require('../globals')
+const { generateRandomIndex, strToInput } = require('../utils')
 
 class Game {
   constructor () {

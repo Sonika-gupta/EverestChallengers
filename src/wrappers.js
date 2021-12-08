@@ -1,6 +1,7 @@
-const { generateRandomIndex, strToInput } = require('./utils')
-const { predictOutcome } = require('./predictOutcome')
 const { errors } = require('./globals')
+const predictOutcome = require('./predictOutcome')
+const { generateRandomIndex, strToInput } = require('./utils')
+const game = require('./models/game')
 
 function getComment (outcome) {
   return (
@@ -27,7 +28,7 @@ function getOutcome (str) {
   const bowlCard = game.getBowlCard(input[0])
   if (!bowlCard) throw errors.invalidBowlType
 
-  return predictOutcome(...input)
+  return predictOutcome(bowlCard, input[1], input[2])
 }
 
 module.exports = {

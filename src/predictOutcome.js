@@ -1,6 +1,6 @@
 const { errors } = require('./globals')
+const { predictionModel } = require('./models/predictionModel')
 const { generateRandomIndex } = require('./utils')
-const { predictionModel } = require('./predictionModel')
 const BowlCard = require('./classes/BowlCard')
 
 function predictOutcome (bowlCard, shotType, shotTiming) {
@@ -17,6 +17,4 @@ function predictOutcome (bowlCard, shotType, shotTiming) {
   ]
 }
 
-module.exports = {
-  predictOutcome
-}
+module.exports = predictOutcome

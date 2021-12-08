@@ -7,9 +7,10 @@
     "start": "node src/index.js",
     "test": "jest"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "jest": "^27.4.3"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.0"
   }
 }

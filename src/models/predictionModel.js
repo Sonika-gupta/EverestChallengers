@@ -1,5 +1,5 @@
-const { hitProbs } = require('./globals')
-const outcomes = require('./data/outcomes.json')
+const { hitProbs } = require('../globals')
+const outcomes = require('../data/outcomes.json')
 
 const levelledOutcomes = {
   bad: [outcomes.wicket, outcomes.noRuns],

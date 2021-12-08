@@ -11,8 +11,13 @@ function toTitleCase (str) {
   return str[0].toUpperCase() + str.slice(1)
 }
 
+function printToConsole (str) {
+  console.log(str)
+}
+
 module.exports = {
-  strToInput,
   generateRandomIndex,
+  printToConsole,
+  strToInput,
   toTitleCase
 }
