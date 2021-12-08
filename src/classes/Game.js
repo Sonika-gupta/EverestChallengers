@@ -21,7 +21,7 @@ class Game {
   }
 
   getBowlCard (type) {
-    return this.bowlCards.find(card => card.name === type)
+    return this.bowlCards.find(card => card.type === type)
   }
 
   addTeams (team1, team2) {

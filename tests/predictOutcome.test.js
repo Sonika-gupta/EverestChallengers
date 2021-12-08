@@ -4,7 +4,7 @@ const outcomes = require('../src/data/outcomes.json')
 
 const game = require('../src/models/game')
 const { populateBowlCards } = require('../src/populators')
-const predictOutcome = require('../src/predictOutcome')
+const { predictOutcome } = require('../src/predictOutcome')
 
 const [highProb, averageProb] = [0.7, 0.4]
 

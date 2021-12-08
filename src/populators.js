@@ -10,7 +10,7 @@ const game = require('./models/game')
 
 function populateBowlCards () {
   bowlTypes.forEach(type => {
-    const bowlCard = new BowlCard(type, shotTypes)
+    const bowlCard = new BowlCard({ ...type, shotTypes })
     game.addBowlCard(bowlCard)
   })
 }

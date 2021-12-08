@@ -1,12 +1,42 @@
 [
-    "bouncer",
-    "outswinger",
-    "yorker",
-    "offBreak",
-    "inswinger",
-    "legcutter",
-    "slower",
-    "pace",
-    "offcutter",
-    "doosra"
+    {
+        "type": "bouncer",
+        "name": "Bouncer"
+    },
+    {
+        "type": "outswinger",
+        "name": "Out Swinger"
+    },
+    {
+        "type": "yorker",
+        "name": "Yorker"
+    },
+    {
+        "type": "offbreak",
+        "name": "Off Break"
+    },
+    {
+        "type": "inswinger",
+        "name": "Inswinger"
+    },
+    {
+        "type": "legcutter",
+        "name": "Leg Cutter"
+    },
+    {
+        "type": "slowerball",
+        "name": "Slower"
+    },
+    {
+        "type": "pace",
+        "name": "Pace"
+    },
+    {
+        "type": "offcutter",
+        "name": "Off Cutter"
+    },
+    {
+        "type": "doosra",
+        "name": "Doosra"
+    }
 ]

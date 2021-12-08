@@ -1,7 +1,21 @@
 const { errors } = require('./globals')
+const { generateRandomIndex, strToInput } = require('./utils')
+
 const { predictionModel } = require('./models/predictionModel')
-const { generateRandomIndex } = require('./utils')
+const game = require('./models/game')
+
 const BowlCard = require('./classes/BowlCard')
+
+function getOutcome (str) {
+  const input = strToInput(str)
+  if (!input || input.length !== 3) throw errors.invalidInput
+
+  const bowlCard = game.getBowlCard(input[0])
+  console.log(bowlCard)
+  if (!bowlCard) throw errors.invalidBowlType
+
+  return predictOutcome(bowlCard, input[1], input[2])
+}
 
 function predictOutcome (bowlCard, shotType, shotTiming) {
   const hitProbability = bowlCard.getHitProbability(shotType)
@@ -17,4 +31,7 @@ function predictOutcome (bowlCard, shotType, shotTiming) {
   ]
 }
 
-module.exports = predictOutcome
+module.exports = {
+  getOutcome,
+  predictOutcome
+}
