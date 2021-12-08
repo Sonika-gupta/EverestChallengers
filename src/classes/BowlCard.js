@@ -1,13 +1,13 @@
-const shotTypes = require('../data/shotTypes.json')
 class BowlCard {
-  constructor (name) {
+  constructor ({ name, value, shotTypes }) {
     this.name = name
-    this.hitProbs = this.assignProbs()
+    this.value = value
+    this.hitProbs = this.assignProbs(shotTypes)
   }
   getHitProbability (shotType) {
     return this.hitProbs[shotType] || null
   }
-  assignProbs () {
+  assignProbs (shotTypes) {
     const probObj = {}
     shotTypes.forEach(type => {
       probObj[type] = Math.random().toFixed(2)

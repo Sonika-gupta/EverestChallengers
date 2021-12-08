@@ -1,13 +1,5 @@
-const outcomes = {
-  wicket: '1 wicket',
-  noRuns: '0 runs',
-  oneRun: '1 run',
-  twoRuns: '2 runs',
-  threeRuns: '3 runs',
-  fourRuns: '4 runs',
-  fiveRuns: '5 runs',
-  sixRuns: '6 runs'
-}
+const { hitProbs } = require('../globals')
+const outcomes = require('../data/outcomes.json')
 
 const levelledOutcomes = {
   bad: [outcomes.wicket, outcomes.noRuns],
@@ -20,24 +12,30 @@ const levelledOutcomes = {
 const model = {
   perfect: [
     {
-      minProb: 0.7,
+      minProb: hitProbs.high,
       outcomes: levelledOutcomes.boundary
     },
     {
-      minProb: 0.4,
+      minProb: hitProbs.average,
       outcomes: levelledOutcomes.betweenWickets.slice(1)
     }
   ],
   good: [
-    { minProb: 0.7, outcomes: levelledOutcomes.good },
-    { minProb: 0.4, outcomes: levelledOutcomes.betweenWickets.slice(0, 2) }
+    { minProb: hitProbs.high, outcomes: levelledOutcomes.good },
+    {
+      minProb: hitProbs.average,
+      outcomes: levelledOutcomes.betweenWickets.slice(0, 2)
+    }
   ],
   early: [
-    { minProb: 0.7, outcomes: levelledOutcomes.betweenWickets.slice(0, 2) },
-    { minProb: 0.4, outcomes: levelledOutcomes.average }
+    {
+      minProb: hitProbs.high,
+      outcomes: levelledOutcomes.betweenWickets.slice(0, 2)
+    },
+    { minProb: hitProbs.average, outcomes: levelledOutcomes.average }
   ],
   late: [{ minProb: 0, outcomes: levelledOutcomes.bad }],
-  default: levelledOutcomes.bad[Math.floor(Math.random() * 2)]
+  default: levelledOutcomes.bad
 }
 
 module.exports = {

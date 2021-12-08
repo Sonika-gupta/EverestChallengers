@@ -1,12 +1,42 @@
 [
-    "Straight",
-    "Flick",
-    "LongOn",
-    "SquareCut",
-    "Sweep",
-    "CoverDrive",
-    "Pull",
-    "Scoop",
-    "LegLance",
-    "UpperCut"
+    {
+        "name": "Straight",
+        "value": "straight"
+    },
+    {
+        "name": "Flick",
+        "value": "flick"
+    },
+    {
+        "name": "Long On",
+        "value": "longon"
+    },
+    {
+        "name": "Square Cut",
+        "value": "squarecut"
+    },
+    {
+        "name": "Sweep",
+        "value": "sweep"
+    },
+    {
+        "name": "Cover Drive",
+        "value": "coverdrive"
+    },
+    {
+        "name": "Pull",
+        "value": "pull"
+    },
+    {
+        "name": "Scoop",
+        "value": "scoop"
+    },
+    {
+        "name": "Leg Lance",
+        "value": "legglance"
+    },
+    {
+        "name": "UpperCut",
+        "value": "uppercut"
+    }
 ]

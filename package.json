@@ -4,12 +4,14 @@
   "description": "Outcome Prediction tool for cricket",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node src/index.js",
     "test": "jest"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "jest": "^27.4.3"
+  },
+  "dependencies": {
+    "boxen": "^4.0.0",
+    "inquirer": "^8.2.0"
   }
 }

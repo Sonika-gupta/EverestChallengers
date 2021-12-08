@@ -1,0 +1,80 @@
+[
+    {
+        "name": "india",
+        "size": 11,
+        "players": [
+            {
+                "name": "Ranganathan B"
+            },
+            {
+                "name": "Sudhakar Dharwada"
+            },
+            {
+                "name": "Mohammed Faizuddin"
+            },
+            {
+                "name": "Lakshmi Prasanna"
+            },
+            {
+                "name": "Venkateshwar K"
+            },
+            {
+                "name": "Donna Issac"
+            },
+            {
+                "name": "Varenya Raj"
+            },
+            {
+                "name": "Naveen Kumar B"
+            },
+            {
+                "name": "Nidhuraj"
+            },
+            {
+                "name": "Ravinder Deolal"
+            },
+            {
+                "name": "Anirudh B "
+            }
+        ]
+    },
+    {
+        "name": "australia",
+        "size": 11,
+        "players": [
+            {
+                "name": "Craig Brown"
+            },
+            {
+                "name": "Chris Jones"
+            },
+            {
+                "name": "Martin Chesbrough"
+            },
+            {
+                "name": "Ringo Thomas"
+            },
+            {
+                "name": "Benjamin Blackwood"
+            },
+            {
+                "name": "Ceola Flannery"
+            },
+            {
+                "name": "Asad Naveed"
+            },
+            {
+                "name": "Daniel Prager"
+            },
+            {
+                "name": "Brent Snook"
+            },
+            {
+                "name": "Rick Giner"
+            },
+            {
+                "name": "Charlott"
+            }
+        ]
+    }
+]
