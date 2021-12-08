@@ -1,4 +1,5 @@
 const { errors } = require('./globals')
+const boxen = require('boxen')
 
 function strToInput (str) {
   if (!str) throw errors.invalidInput
@@ -11,7 +12,11 @@ function generateRandomIndex (length) {
 }
 
 function printToConsole (str) {
-  console.log(str)
+  const options = {
+    padding: 1,
+    margin: 1
+  }
+  console.log(boxen(str, options))
 }
 
 module.exports = {

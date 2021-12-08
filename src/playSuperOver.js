@@ -16,9 +16,12 @@ function createCommentary ({
   const shotTypeName = shotTypes.find(type => type.value === shotType).name
   const shotTimingName = shotTimings.find(timing => timing.value === shotTiming)
     .name
-  return `${bowler} bowled a ${bowlType} ball \n${batsman} played ${shotTimingName} ${shotTypeName} \n${getComment(
-    outcome
-  )} \n`
+
+  return (
+    `${bowler} bowled a ${bowlType} ball \n` +
+    `${batsman} played ${shotTimingName} ${shotTypeName} \n` +
+    `${getComment(outcome)} \n`
+  )
 }
 
 function playSuperOver ({

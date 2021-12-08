@@ -13,7 +13,7 @@ const { getShotOutcome, getCommentaryOutcome } = require('./wrappers')
 const playSuperOver = require('./playSuperOver')
 const game = require('./models/game')
 
-async function main () {
+function header () {
   const greeting = chalk.blackBright.bold('EVEREST CHALLENGERS')
   const boxenOptions = {
     padding: 1,
@@ -22,10 +22,12 @@ async function main () {
     borderColor: 'red',
     backgroundColor: 'white'
   }
-  printToConsole(boxen(greeting, boxenOptions))
+  console.log(boxen(greeting, boxenOptions))
+}
 
+async function main () {
+  header()
   populateGame()
-  console.log('game:', game)
 
   do {
     var { functionChoice } = await getFunctionChoice()

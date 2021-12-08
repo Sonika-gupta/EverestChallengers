@@ -1,5 +1,5 @@
 const Team = require('./Team')
-const { errors } = require('../globals')
+const { errors, colorText } = require('../globals')
 const { generateRandomIndex, strToInput } = require('../utils')
 
 class Game {
@@ -122,13 +122,27 @@ class Game {
   }
 
   getResult () {
-    const teamName = this.teams[this.battingTeamIndex].name.toUpperCase()
-    const comment = `${teamName} scored: ${this.score} runs`
+    const teamName = this.teams[this.battingTeamIndex].name
+
+    const comment =
+      `${colorText[teamName](teamName.toUpperCase())} scored: ` +
+      `${colorText.score(this.score)} runs`
+
     if (this.wicketIndices.length === 2 || this.score < this.target) {
-      return comment + `\n${teamName} lost by ${this.target - this.score} runs`
+      return (
+        comment +
+        '\n' +
+        colorText[teamName](teamName.toUpperCase()) +
+        colorText.resultBad(' LOST ') +
+        `by ${colorText.score(this.target - this.score)} runs`
+      )
     }
     return (
-      comment + `\n${teamName} won by ${2 - this.wicketIndices.length} wickets`
+      comment +
+      '\n' +
+      colorText[teamName](teamName.toUpperCase()) +
+      colorText.resultGood(' WON ') +
+      `by ${colorText.score(2 - this.wicketIndices.length)} wickets`
     )
   }
 }

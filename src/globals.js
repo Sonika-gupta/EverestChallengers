@@ -1,3 +1,5 @@
+const chalk = require('chalk')
+
 module.exports = {
   errors: {
     invalidInput: 'Invalid Input',
@@ -10,5 +12,14 @@ module.exports = {
   hitProbs: {
     high: 0.7,
     average: 0.4
+  },
+  colorText: {
+    comment: chalk.magenta,
+    resultGood: chalk.green,
+    resultAverage: chalk.cyan,
+    resultBad: chalk.red,
+    australia: chalk.yellow,
+    india: chalk.blue,
+    score: chalk.bold.whiteBright
   }
 }
