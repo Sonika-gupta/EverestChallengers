@@ -53,7 +53,10 @@ function getSuperOverInput () {
       type: 'rawlist',
       name: 'chasingTeamName',
       message: 'Which team is chasing?',
-      choices: teams.map(team => team.name.toUpperCase()),
+      choices: teams.map(team => ({
+        name: team.name.toUpperCase(),
+        value: team.name
+      })),
       default: teams[1].name
     },
     {

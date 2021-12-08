@@ -8,12 +8,12 @@ describe('Valid Super Over', () => {
     expect(() =>
       playSuperOver({
         shotsPlayed: [
-          'Straight Perfect',
+          'Straight Late',
           'Pull Early',
-          'UpperCut Good',
+          'UpperCut Late',
           'Sweep Late',
           'CoverDrive Early',
-          'Flick Perfect'
+          'Flick Late'
         ]
       })
     ).not.toThrow()

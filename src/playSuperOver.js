@@ -50,13 +50,12 @@ function playSuperOver ({
     const outcome = predictOutcome(superOverBowlCards[i], shotType, shotTiming)
     const comment = createCommentary({
       bowler,
-      batsman,
+      batsman: game.getCurrentBatsman(),
       bowlType: superOverBowlCards[i].name,
       shotType: shotType,
       shotTiming: shotTiming,
       outcome
     })
-
     commentary.push(comment)
 
     result = game.playDelivery(outcome)

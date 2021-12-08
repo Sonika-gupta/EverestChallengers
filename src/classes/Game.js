@@ -24,6 +24,10 @@ class Game {
     return this.bowlCards.find(card => card.value === type)
   }
 
+  getCurrentBatsman () {
+    return this.currentBatsman.name
+  }
+
   addTeams (team1, team2) {
     if (this.teams.length != 0) {
       throw errors.teamAlreadyAssigned
