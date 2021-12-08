@@ -1,6 +1,10 @@
 const { predictOutcome } = require('./predictOutcome')
-const { generateRandomIndex, strToInput, printToConsole } = require('./utils')
-const { getComment } = require('./wrappers')
+const {
+  generateRandomIndex,
+  strToInput,
+  printToConsole,
+  getComment
+} = require('./utils')
 const game = require('./models/game')
 
 const { shotTypes, shotTimings } = require('./data')
@@ -36,7 +40,8 @@ function playSuperOver ({
     battingTeamName: chasingTeamName
   })
 
-  let result = null
+  let result = null,
+    commentary = []
   for (let i = 0; i < shotsPlayed.length; i++) {
     const [shotType, shotTiming] = Array.isArray(shotsPlayed[i])
       ? shotsPlayed[i]
@@ -52,13 +57,14 @@ function playSuperOver ({
       outcome
     })
 
-    printToConsole(comment)
+    commentary.push(comment)
 
     result = game.playDelivery(outcome)
     if (result) break
   }
 
-  printToConsole(result || game.getResult())
+  commentary.push(result || game.getResult())
+  return commentary
 }
 
 module.exports = playSuperOver

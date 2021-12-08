@@ -1,29 +1,13 @@
-const { colorText } = require('./globals')
+const { errors } = require('./globals')
+const playSuperOver = require('./playSuperOver')
 const { getOutcome } = require('./predictOutcome')
-const { generateRandomIndex, strToInput, printToConsole } = require('./utils')
-const inquiry = require('./inquiry')
-
-function decorate (text, type) {
-  if (colorText[type]) return colorText[type](text)
-
-  if (type === 'result') {
-    if (text.match(/1 wicket/)) return colorText.resultBad(text)
-    if (text.match(/0 runs|1 run|2 runs|3 runs/))
-      return colorText.resultAverage(text)
-    if (text.match(/4 runs|5 runs|6 runs/)) return colorText.resultGood(text)
-  }
-}
-
-function getComment (outcome) {
-  return (
-    decorate(
-      outcome.comments[generateRandomIndex(outcome.comments.length)],
-      'comment'
-    ) +
-    ' - ' +
-    decorate(outcome.result, 'result')
-  )
-}
+const {
+  generateRandomIndex,
+  strToInput,
+  printToConsole,
+  decorate,
+  getComment
+} = require('./utils')
 
 function getShotOutcome (str) {
   const outcome = getOutcome(str)
@@ -35,8 +19,14 @@ function getCommentaryOutcome (str) {
   printToConsole(getComment(outcome))
 }
 
+function getSuperOverCommentary ({ shotsPlayed, chasingTeamName, target }) {
+  if (shotsPlayed.length < 6) throw errors.requiredSixEntries
+  const commentary = playSuperOver({ shotsPlayed, chasingTeamName, target })
+  commentary.forEach(comment => printToConsole(comment))
+}
+
 module.exports = {
-  getComment,
   getShotOutcome,
-  getCommentaryOutcome
+  getCommentaryOutcome,
+  getSuperOverCommentary
 }

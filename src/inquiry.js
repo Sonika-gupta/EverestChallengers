@@ -53,7 +53,7 @@ function getSuperOverInput () {
       type: 'rawlist',
       name: 'chasingTeamName',
       message: 'Which team is chasing?',
-      choices: teams.map(team => team.name),
+      choices: teams.map(team => team.name.toUpperCase()),
       default: teams[1].name
     },
     {
@@ -74,14 +74,14 @@ function getShotPlayed (ballNumber) {
     {
       type: 'rawlist',
       name: 'shotType',
-      message: `Ball ${ballNumber}: Select Shot Type Card`,
+      message: `Ball ${ballNumber}: Shot Type`,
       choices: shotTypes,
       default: shotTypes[0]
     },
     {
       type: 'rawlist',
       name: 'shotTiming',
-      message: `Ball ${ballNumber}: Select Bowl Type Card`,
+      message: `Ball ${ballNumber}: Bowl Type`,
       choices: shotTimings,
       default: shotTimings[0]
     }

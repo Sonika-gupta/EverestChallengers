@@ -7,16 +7,20 @@ const {
   getSuperOverInput,
   getShotPlayed
 } = require('./inquiry')
+
 const populateGame = require('./populators')
-const { printToConsole } = require('./utils')
-const { getShotOutcome, getCommentaryOutcome } = require('./wrappers')
-const playSuperOver = require('./playSuperOver')
+const {
+  getShotOutcome,
+  getCommentaryOutcome,
+  getSuperOverCommentary
+} = require('./wrappers')
+
 const game = require('./models/game')
 
 function header () {
   const greeting = chalk.blackBright.bold('EVEREST CHALLENGERS')
   const boxenOptions = {
-    padding: 1,
+    padding: 3,
     margin: 1,
     borderStyle: 'doubleSingle',
     borderColor: 'red',
@@ -28,11 +32,12 @@ function header () {
 async function main () {
   header()
   populateGame()
+  let input = {}
 
   do {
-    var { functionChoice } = await getFunctionChoice()
+    input = await getFunctionChoice()
 
-    switch (functionChoice) {
+    switch (input.functionChoice) {
       case 'Predict Outcome': {
         const input = await getPredictionInput()
         getShotOutcome(Object.values(input).join(' '))
@@ -52,11 +57,11 @@ async function main () {
           )
           shotsPlayed.push([shotType, shotTiming])
         }
-        playSuperOver({ chasingTeamName, target, shotsPlayed })
+        getSuperOverCommentary({ chasingTeamName, target, shotsPlayed })
         break
       }
     }
-  } while (functionChoice !== 'Exit')
+  } while (input.functionChoice !== 'Exit')
 }
 
 main()
