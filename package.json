@@ -11,6 +11,7 @@
     "jest": "^27.4.3"
   },
   "dependencies": {
+    "boxen": "^4.0.0",
     "inquirer": "^8.2.0"
   }
 }
