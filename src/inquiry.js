@@ -39,7 +39,7 @@ function getPredictionInput () {
     {
       type: 'rawlist',
       name: 'shotTiming',
-      message: 'Select Bowl Type Card',
+      message: 'Select Shot Timing',
       choices: shotTimings,
       default: shotTimings[0]
     }
@@ -84,7 +84,7 @@ function getShotPlayed (ballNumber) {
     {
       type: 'rawlist',
       name: 'shotTiming',
-      message: `Ball ${ballNumber}: Bowl Type`,
+      message: `Ball ${ballNumber}: Shot Timing`,
       choices: shotTimings,
       default: shotTimings[0]
     }
