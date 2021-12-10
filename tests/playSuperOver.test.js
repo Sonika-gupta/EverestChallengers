@@ -6,16 +6,14 @@ populateGame()
 describe('Valid Super Over', () => {
   test('Should Print Commentary for each ball and result of match', () => {
     expect(() =>
-      playSuperOver({
-        shotsPlayed: [
-          'Straight Late',
-          'Pull Early',
-          'UpperCut Late',
-          'Sweep Late',
-          'CoverDrive Early',
-          'Flick Late'
-        ]
-      })
+      playSuperOver([
+        'Straight Late',
+        'Pull Early',
+        'UpperCut Late',
+        'Sweep Late',
+        'CoverDrive Early',
+        'Flick Late'
+      ])
     ).not.toThrow()
   })
 })

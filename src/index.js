@@ -57,7 +57,7 @@ async function main () {
           )
           shotsPlayed.push([shotType, shotTiming])
         }
-        getSuperOverCommentary({ chasingTeamName, target, shotsPlayed })
+        getSuperOverCommentary(shotsPlayed, chasingTeamName, target)
         break
       }
     }

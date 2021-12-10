@@ -7,6 +7,7 @@ const {
 } = require('./utils')
 const game = require('./models/game')
 
+const { errors } = require('./globals')
 const { shotTypes, shotTimings } = require('./data')
 
 function createCommentary ({
@@ -28,11 +29,13 @@ function createCommentary ({
   )
 }
 
-function playSuperOver ({
+function playSuperOver (
   shotsPlayed,
   chasingTeamName = 'australia',
   target = 21
-}) {
+) {
+  if (shotsPlayed.length < 6) throw errors.requiredSixEntries
+
   const superOverBowlCards = game.getRandomBowlCards(6)
 
   const { bowler, batsman } = game.startSuperOver({
