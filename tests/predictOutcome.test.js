@@ -1,14 +1,12 @@
 const { shotTimings, shotTypes, outcomes } = require('../src/data')
 
-const game = require('../src/models/game')
-const populateGame = require('../src/populators')
+const { game, startNewGame } = require('../src/models/game')
 const { predictOutcome } = require('../src/predictOutcome')
 const { generateRandomIndex } = require('../src/utils')
 
 const [highProb, averageProb] = [0.7, 0.4]
 
-populateGame()
-
+startNewGame()
 describe('bad outcome', () => {
   test('shot type with hit probability < averageProb should return 0 runs or wicket irrespective of timing', () => {
     const card = game.bowlCards[generateRandomIndex(game.bowlCards.length)]

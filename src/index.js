@@ -8,14 +8,12 @@ const {
   getShotPlayed
 } = require('./inquiry')
 
-const populateGame = require('./populators')
+const { startNewGame } = require('./models/game')
 const {
   getShotOutcome,
   getCommentaryOutcome,
   getSuperOverCommentary
 } = require('./wrappers')
-
-const game = require('./models/game')
 
 function header () {
   const greeting = chalk.blackBright.bold('EVEREST CHALLENGERS')
@@ -31,7 +29,7 @@ function header () {
 
 async function main () {
   header()
-  populateGame()
+  startNewGame()
   let input = {}
 
   do {
@@ -58,6 +56,7 @@ async function main () {
           shotsPlayed.push([shotType, shotTiming])
         }
         getSuperOverCommentary(shotsPlayed, chasingTeamName, target)
+        startNewGame()
         break
       }
     }

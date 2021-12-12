@@ -2,7 +2,7 @@ const { errors } = require('./globals')
 const { generateRandomIndex, strToInput } = require('./utils')
 
 const { predictionModel } = require('./models/predictionModel')
-const game = require('./models/game')
+const { game } = require('./models/game')
 
 const BowlCard = require('./classes/BowlCard')
 

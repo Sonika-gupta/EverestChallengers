@@ -1,4 +1,14 @@
 const Game = require('../classes/Game')
+const { populateGame } = require('../populators')
+
 const game = new Game()
 
-module.exports = game
+function startNewGame () {
+  Object.assign(game, new Game())
+  populateGame(game)
+}
+
+module.exports = {
+  game,
+  startNewGame
+}

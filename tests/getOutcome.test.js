@@ -1,8 +1,7 @@
-const populateGame = require('../src/populators')
+const { startNewGame } = require('../src/models/game')
 const { getOutcome } = require('../src/predictOutcome')
 
-populateGame()
-
+startNewGame()
 describe('Validate Input', () => {
   test('empty input should throw error', () => {
     expect(() => getOutcome('')).toThrow('Invalid Input')

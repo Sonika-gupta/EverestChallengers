@@ -5,7 +5,7 @@ const {
   printToConsole,
   getComment
 } = require('./utils')
-const game = require('./models/game')
+const { game } = require('./models/game')
 
 const { errors } = require('./globals')
 const { shotTypes, shotTimings } = require('./data')

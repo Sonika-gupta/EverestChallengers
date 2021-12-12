@@ -1,8 +1,7 @@
+const { startNewGame } = require('../src/models/game')
 const playSuperOver = require('../src/playSuperOver')
-const populateGame = require('../src/populators')
 
-populateGame()
-
+startNewGame()
 describe('Valid Super Over', () => {
   test('Should Print Commentary for each ball and result of match', () => {
     expect(() =>

@@ -1,9 +1,8 @@
 const { getSuperOverCommentary } = require('../src/wrappers')
 const { errors } = require('../src/globals')
-const populateGame = require('../src/populators')
+const { startNewGame } = require('../src/models/game')
 
-populateGame()
-
+startNewGame()
 describe('Invalid Super Over', () => {
   test('Shots Played array need 6 entries', () => {
     expect(() =>
